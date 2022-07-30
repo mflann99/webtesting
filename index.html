@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sample Home Page</title>
+</head>
+
+<body>
+    <! -- Calls a function on the page load. -->
+        <element onload="myfunction_onload">
+            <p value="{{company}}" type="text" class="form-control" id="Company" name="Company" placeholder="Company name" data-bs-toggle="tooltip" title="The name of the company that the document is for." onblur="titleCase(this)" >test</p>
+            <button type="submit" onclick='myfunction_clickevent()'>Run my Python!</button>
+            <script type="text/javascript"
+                src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+            <! -- This script runs the python script on the page load -->
+                <script>
+                    function myfunction_onload() {
+                        $.ajax({
+                            url: "app.py",
+                            context: document.body
+                        })
+                    }
+                </script>
+                <! -- This script runs the python script when the button is clicked -->
+                    <script>
+                        function myfunction_clickevent() {
+                            $.ajax({
+                                url: "/test",
+                                context: document.body
+                            });
+                        }
+                    </script>
+
+
+</body>
+
+</html>
